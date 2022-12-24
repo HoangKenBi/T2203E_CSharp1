@@ -43,10 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BTPhanSo\PhanSo.cs" />
+    <Compile Include="BTPhone\Phone.cs" />
+    <Compile Include="BTPhone\PhoneBook.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="session1\Human.cs" />
     <Compile Include="session2\Student .cs" />
+    <Compile Include="session3\AbstractStudent.cs" />
+    <Compile Include="session3\FPTStudent.cs" />
+    <Compile Include="session3\IHuman.cs" />
+    <Compile Include="session3\IStudent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

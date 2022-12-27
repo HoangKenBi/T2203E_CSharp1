@@ -46,6 +46,7 @@
     <Compile Include="BTPhanSo\PhanSo.cs" />
     <Compile Include="BTPhone\Phone.cs" />
     <Compile Include="BTPhone\PhoneBook.cs" />
+    <Compile Include="BTPhone\PhoneNumber.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="session1\Human.cs" />

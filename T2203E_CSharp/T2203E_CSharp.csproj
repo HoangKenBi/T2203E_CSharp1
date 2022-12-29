@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BTKhachHang\KhachHang.cs" />
     <Compile Include="BTPhanSo\PhanSo.cs" />
     <Compile Include="BTPhone\Phone.cs" />
     <Compile Include="BTPhone\PhoneBook.cs" />

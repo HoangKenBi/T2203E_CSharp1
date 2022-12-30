@@ -1,51 +1,180 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using T2203E_CSharp.BTPhone;
 using T2203E_CSharp.session1;
-
+using T2203E_CSharp.session4;
+using T2203E_CSharp.session5;
 
 namespace T2203E_CSharp
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args, PhoneBook phoneBook)
+
+        public static void Main(string[] args)
         {
-            phoneBook.InsertPhone("John", "123-456-7890");
-            phoneBook.InsertPhone("John", "098-765-4321");
-            phoneBook.InsertPhone("Jane", "111-222-3333");
+            string city = "Hanoi";
+            string country = "Vietnam";
 
-            phoneBook.SearchPhone("John");
-            // Output: Phone number(s) for John: 123-456-7890, 098-765-4321
+            // Tạo URL để gọi API
+            string apiUrl = $"https://api.openweathermap.org/data/2.5/weather?q={city},{country}&appid=09a71427c59d38d6a34f89b47d75975c&units=metric";
 
-            phoneBook.SearchPhone("Jane");
-            // Output: Phone number(s) for Jane: 111-222-3333
+            // Tải dữ liệu từ API về
+            string data = "";
+            using (WebClient client = new WebClient())
+            {
+                data = client.DownloadString(apiUrl);
+            }
 
-            phoneBook.SearchPhone("Alice");
-            // Output: No phone number(s) found for Alice.
+            // Deserialize dữ liệu JSON về đối tượng
+            dynamic weatherData = JsonConvert.DeserializeObject(data);
 
-            phoneBook.UpdatePhone("Jane", "444-555-6666");
-
-            phoneBook.SearchPhone("Jane");
-            // Output: Phone number(s) for Jane: 444-555-6666
-
-            phoneBook.Sort();
-
-            // PhoneList is now sorted by name
+            // Lấy thông tin thời tiết từ đối tượng
+            Console.WriteLine($"Thành phố: {weatherData.name}");
+            Console.WriteLine($"Nhiệt độ: {weatherData.main.temp} độ C");
+            Console.WriteLine($"Độ ẩm: {weatherData.main.humidity}%");
+            Console.WriteLine($"Tốc độ gió: {weatherData.wind.speed} m/s");
         }
 
 
-        static void Main1(string[] args)
+
+        static void Main7(string[] args)
+        {
+            Fetch();
+        }
+
+        static async void Fetch()
+        {
+            CallApi ca = new CallApi();
+            Product s = await ca.FetchData();
+            Console.WriteLine(s.ToString());
+        }
+
+
+
+        static void Main6(string[] args)
+        {
+            //ThreadRun();
+            //Thread t1 = new Thread(ThreadRun);
+            //Thread t2 = new Thread(ThreadRunParam);
+            //t2.IsBackground = true;
+            ////t1.IsBackground = true;
+            //t1.Start();
+            //t2.Start("T2203E");
+
+            Number num = new Number() { X = 0, Y = 0 };
+            Thread n1 = new Thread(ThreadLock);
+            Thread n2 = new Thread(ThreadLock);
+            n1.Start(num);
+            n2.Start(num);
+        }
+
+        static void ThreadLock(object o)
+        {
+            Number n = (Number)o;
+            for (int i = 0; i < 20; i++)
+            {
+                lock (n)
+                {
+                    n.ChangeXY();
+                    n.PrintXY();
+                }
+                try
+                {
+                    Thread.Sleep(1000);
+                }
+                catch (Exception e) { }
+            }
+        }
+
+        static void ThreadRun()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Console.WriteLine("i=" + i);
+                try
+                {
+                    Thread.Sleep(1000);
+                }
+                catch (Exception e) { }
+            }
+        }
+
+        static void ThreadRunParam(object msg)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                Console.WriteLine("i=" + i + " Msg:" + msg);
+                try
+                {
+                    Thread.Sleep(1000);
+                }
+                catch (Exception e) { }
+            }
+        }
+
+
+
+        static void Main5(string[] args)
+        {
+            StringToVoid stv = new StringToVoid(ShowMessage);
+            StringToVoid stv2 = new StringToVoid(DemoDegegate.SayHello);
+            StringToVoid stv3 = new StringToVoid(new DemoDegegate().ShowInfo);
+
+            stv += DemoDegegate.SayHello;
+            stv += new DemoDegegate().ShowInfo;
+
+            stv += stv3;
+
+            stv("Xin chao cac ban");// ShowMessage("Xin chao cac ban");
+
+            DemoEvent de = new DemoEvent();
+            de.Invoke();
+        }
+
+        static void ShowMessage(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+
+        static string GetMessage(string s)
+        {
+            return "Hello: " + s;
+        }
+
+
+        static void Main4(string[] args)
+        {
+            PhoneBook pb = new PhoneBook();
+            pb.InsertPhone("Nam", "0987272727");
+            pb.InsertPhone("Minh", "0123456789");
+            pb.InsertPhone("Dung", "09192838211");
+            pb.InsertPhone("Nam", "089928291");
+            pb.InsertPhone("Nam", "0987272727");
+
+            pb.Sort();
+
+            foreach (PhoneNumber p in pb.PhoneList)
+            {
+                Console.WriteLine(p.ToString());
+            }
+        }
+
+        static void Main3(string[] args)
         {
             try
             {
                 int x = 10;
                 int y = 0;
-                throw new Exception("Y bằng 0 Mất rồi");
+                throw new Exception("Y Bang 0 Mat roi");
                 y++;
                 float z = x / y;
+                Console.WriteLine("z = " + z);
             }
             catch (Exception e)
             {
@@ -61,14 +190,16 @@ namespace T2203E_CSharp
         {
             Human h = new Human();
             h.Run();
+            Human dvt = new Human();
+            dvt.Run();
             h.Age = 19;
             h.Email = "abc@gmail.com";
-            Console.WriteLine(h.Age);
+            //Console.WriteLine(h.Age);
 
             Student s = new Student();
-            // s.telephone[0] = "0123345664";
-            s[0] = "02335656563";
-
+            //   s.telephone[0] = "02982992929";
+            s[0] = "092828228";
+            s[1] = "02293939393";
             List<string> ls = new List<string>();
             ls.Add("hello");
             ls.Add("world");
@@ -84,7 +215,5 @@ namespace T2203E_CSharp
                 Console.WriteLine(l);
             }
         }
-
-
     }
 }

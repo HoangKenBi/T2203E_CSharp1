@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace T2203E_CSharp.BTHetMon.BT2
 {
-    internal class Lion
+    public class Lion : Home
     {
+        public Lion(double weight, string name) : base(weight, name) { }
     }
 }

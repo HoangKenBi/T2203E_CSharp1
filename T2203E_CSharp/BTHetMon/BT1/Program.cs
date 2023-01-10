@@ -8,7 +8,7 @@ namespace T2203E_CSharp.BTHetMon.BT1
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             Cylinder cylinder = new Cylinder(38.64, 22.48);
             cylinder.Process();

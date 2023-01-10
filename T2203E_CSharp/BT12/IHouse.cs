@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace T2203E_CSharp.BT12
 {
-    internal interface IHouse
+    public interface IHouse
     {
-        public void Input();
-        public void Display();
+         void Input();
+         void Display();
+        
     }
 }

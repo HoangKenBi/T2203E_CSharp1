@@ -16,7 +16,7 @@ namespace T2203E_CSharp
     public class Program
     {
 
-        public static void Main(string[] args)
+        public static void Main9(string[] args)
         {
             string city = "Hanoi";
             string country = "Vietnam";

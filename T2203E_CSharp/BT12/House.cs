@@ -46,14 +46,14 @@ namespace T2203E_CSharp.BT12
         }
 
         // cài đè (override) display từ IHouse
-        public void Display()
+        public virtual void Display()
         {
             Console.WriteLine("thông tin nhà: ");
             Console.WriteLine("Số nhà: ");
         }
 
         // cài đè (override) input từ IHouse
-        public void Input()
+        public virtual void Input()
         {
             Console.WriteLine("Nhập thông tin  nhà: ");
             Console.WriteLine("Số nhà: ");

@@ -34,3 +34,4 @@ namespace T2203E_CSharp.session4
 			Print += DemoDelegate.SayHello;
 			Print += new DemoDelegate().ShowInfo;
 		}
+*/

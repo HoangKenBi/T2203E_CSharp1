@@ -51,7 +51,8 @@
     <Compile Include="BT12\IHouse.cs" />
     <Compile Include="BTHetMon\BT1\Cylinder.cs" />
     <Compile Include="BTHetMon\BT1\Program.cs" />
-    <Compile Include="BTHetMon\BT2\ABXXXXX.cs" />
+    <Compile Include="BTHetMon\BT2\Lion.cs" />
+    <Compile Include="BTHetMon\BT2\Tiger.cs" />
     <Compile Include="BTKhachHang\KhachHang.cs" />
     <Compile Include="BTPhanSo\PhanSo.cs" />
     <Compile Include="BTPhone\PhoneBook.cs" />

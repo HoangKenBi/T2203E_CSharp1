@@ -11,7 +11,6 @@ namespace T2203E_CSharp.BTHetMon.BT1
         static void Main(string[] args)
         {
             Cylinder cylinder = new Cylinder(38.64, 22.48);
-
             cylinder.Process();
             Console.WriteLine(cylinder.Result());
         }   

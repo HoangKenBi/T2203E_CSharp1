@@ -33,10 +33,10 @@ namespace T2203E_CSharp.BTHetMon.BT1
 
         public string Result()
         {
-            return "Base Area: " + Math.Round(BaseArea,2) + "\n" +
-                    "Lateral Area: " + Math.Round(LateralArea,2) + "\n" +
-                    "Total Area: " + Math.Round(TotalArea) + "\n" +
-                    "Volume: " + Math.Round(Volume);
+            return "radius: " + radius + "\n" + "height: " + height + "\n" + "Base Area: " + Math.Round(BaseArea, 2) + "\n" +
+                    "Lateral Area: " + Math.Round(LateralArea, 2) + "\n" +
+                    "Total Area: " + Math.Round(TotalArea, 2) + "\n" +
+                    "Volume: " + Math.Round(Volume, 2);
         }
 
     }
